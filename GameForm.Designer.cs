@@ -128,7 +128,7 @@
             scoreLabel.Name = "scoreLabel";
             scoreLabel.Size = new Size(30, 35);
             scoreLabel.TabIndex = 9;
-            scoreLabel.Text = "0";
+            scoreLabel.Text = "1";
             // 
             // label8
             // 

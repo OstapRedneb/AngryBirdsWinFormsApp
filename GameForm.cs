@@ -8,19 +8,21 @@ namespace AngryBirdsWinFormsApp
         static Graphics graphics;
         static Random random = new Random();
 
-        static Bird bird;
-        static Pig pig;
+        Bird bird;
+        Pig pig;
 
         static bool isStrech = false;
         static bool isUsing = false;
 
+        static bool shouldPlus = false;
+
         public GameForm()
         {
             InitializeComponent();
+            DoubleBuffered = true;
 
             graphics = CreateGraphics();
 
-            Ball.graphics = graphics;
             Ball.pen = new Pen(Color.Black);
             Ball.formPen = new Pen(BackColor);
             Ball.formBrush = new SolidBrush(BackColor);
@@ -29,11 +31,7 @@ namespace AngryBirdsWinFormsApp
 
         private void GameForm_Load(object sender, EventArgs e)
         {
-            bird = new Bird(63, 285, 30, 0, 0, 0, Color.Red);
-            pig = new Pig(random.Next(280, 280 + 454), random.Next(49, 49 + 261), 30, 0, 0, 0, Color.Green);
-
-            bird.Show();
-            pig.Show();
+            CreateNewBird();
         }
 
         public void GameForm_MouseDown(object sender, MouseEventArgs e)
@@ -53,29 +51,17 @@ namespace AngryBirdsWinFormsApp
                 bird.y = e.Location.Y - bird.radius;
 
                 if (bird.x < 23)
-                {
                     bird.x = 23;
-                    //bird.y = e.Location.Y - bird.radius;
-                }
 
                 if (bird.x > 103)
-                {
                     bird.x = 103;
-                    //bird.y = e.Location.Y - bird.radius;
-                }
 
 
-                if (bird.y > 285 + 40)
-                {
-                    bird.y = 285 + 40;
-                    //bird.x = e.Location.X - bird.radius;
-                }
+                if (bird.y > 325)
+                    bird.y = 325;
 
-                if (bird.y < 285 - 40)
-                {
-                    bird.y = 285 - 40;
-                    //bird.x = e.Location.X - bird.radius;
-                }
+                if (bird.y < 245)
+                    bird.y = 245;
 
             }
         }
@@ -84,8 +70,50 @@ namespace AngryBirdsWinFormsApp
             isStrech = false;
             isUsing = true;
 
+            bird.Vx = 63 - bird.x;
+            bird.Vy = 285 - bird.y;
+
+            bird.g = 2.5f;
+
+            bird.isFly = true;
         }
 
+        public void CreateNewBird() 
+        {
+            pig?.timer.Stop();
+            pig?.Clear();
 
+            graphics.Clear(BackColor);
+
+            isUsing = false;
+
+            scoreLabel.Text = shouldPlus ? (int.Parse(scoreLabel.Text) + 1).ToString() : (int.Parse(scoreLabel.Text) - 1).ToString();
+
+            shouldPlus = false;
+
+            bird = new Bird(63, 285, 30, 0, 0, 0, Color.Red, CreateNewBird);
+            bird.timer.Interval = 25;
+            Bird.IsTouched = ChekcColision;
+
+            pig = new Pig(random.Next(280, 280 + 454), random.Next(49, 49 + 261), 30, 0, 0, 0, Color.Green);
+
+            bird.Show();
+            pig.Show();
+        }
+
+        public bool ChekcColision() 
+        {
+            if (MathF.Abs(bird.centerX - pig.centerX) <= bird.radius + pig.radius && MathF.Abs(bird.centerY - pig.centerY) <= bird.radius + pig.radius) 
+            {
+                shouldPlus = true;
+                return true;
+            }
+            return false;
+        }
+
+        public void ChangeAndClear() 
+        {
+
+        }
     }
 }
