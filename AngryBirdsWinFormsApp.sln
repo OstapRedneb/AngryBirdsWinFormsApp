@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngryBirdsWinFormsApp", "AngryBirdsWinFormsApp.csproj", "{18A87D82-2B0E-4364-944B-4F36BF553028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhysicsBallWinFormsLibrary", "..\PhysicsBallWinFormsLibrary\PhysicsBallWinFormsLibrary.csproj", "{420E042B-6474-29BF-1824-9FF87A3FDDD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18A87D82-2B0E-4364-944B-4F36BF553028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A87D82-2B0E-4364-944B-4F36BF553028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A87D82-2B0E-4364-944B-4F36BF553028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A87D82-2B0E-4364-944B-4F36BF553028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420E042B-6474-29BF-1824-9FF87A3FDDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420E042B-6474-29BF-1824-9FF87A3FDDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420E042B-6474-29BF-1824-9FF87A3FDDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420E042B-6474-29BF-1824-9FF87A3FDDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {775903BC-2CB1-4957-8E19-4955E26F6116}
+	EndGlobalSection
+EndGlobal
